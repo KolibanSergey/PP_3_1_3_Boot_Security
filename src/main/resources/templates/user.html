@@ -1,11 +1,41 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Spring Security Example</title>
+  <meta charset="UTF-8">
+  <title th:text="${user.username}">VALUE</title>
+
+  <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
 </head>
 <body>
-<h1>User, welcome spring boot security page!</h1>
-
-
+<div class="container">
+  <h1>User Info</h1>
+  <h2 th:text="${user.username}">VALUE</h2>
+  <hr>
+  <table border="1" class="table table-striped table-responsive-md">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>last Name</th>
+      <th>Age</th>
+      <th>Roles</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td th:text="${user.id}"></td>
+      <td th:text="${user.name}"></td>
+      <td th:text="${user.lastName}"></td>
+      <td th:text="${user.age}"></td>
+      <td th:each="role : ${roles}">
+        <p th:text="${role.role}"></p></td>
+    </tr>
+    </tbody>
+  </table>
+  <a th:href="@{/logout}" class="btn btn-primary btn-sm mb-3">Logout</a>
+</div>
 </body>
 </html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${user.username}">VALUE</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+</head>
+
+<body>
+<div class="container">
+    <h2>Edit User</h2>
+
+    <form action="#" th:action="@{/admin/user/updateUser/{id}(id=${user.id})}" th:object="${user}"
+          method="POST">
+        <label>Name</label>
+        <input type="text" th:field="*{name}" placeholder="Name" class="form-control mb-4 col-4">
+        <label>Last Name</label>
+        <input type="text" th:field="*{lastName}" placeholder="Last Name" class="form-control mb-4 col-4">
+        <label>Age</label>
+        <input type="text" th:field="*{age}" placeholder="Age" class="form-control mb-4 col-4">
+        <label>Login</label>
+        <input type="text" th:field="*{username}" placeholder="Login" class="form-control mb-4 col-4">
+        <label>Password</label>
+        <input type="text" th:field="*{password}" placeholder="Password"
+               class="form-control mb-4 col-4">
+
+        <input type="checkbox" name="roless" value="ROLE_USER"/> USER
+        <input type="checkbox" name="roless" value="ROLE_ADMIN"/> ADMIN
+        <br>
+        <button type="submit" class="btn btn-info col-2"> Update</button>
+    </form>
+    <hr>
+    <a th:href="@{/admin}" class="btn btn-primary btn-sm mb-3"> Back to User List</a>
+    <a th:href="@{/logout}" class="btn btn-primary btn-sm mb-3">Logout</a>
+</div>
+</body>
+</html>
